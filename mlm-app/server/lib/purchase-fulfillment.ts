@@ -55,7 +55,7 @@ export async function fulfillProductPurchase(params: {
     }
 
     // 4. Distribute commissions
-    const purchaseAmount = totalAmount || product.price;
+    const purchaseAmount = Math.max(totalAmount || product.price, 0.01); // guard: always > 0
     const allUsers = await mongoDb.getAllUsers();
 
     LoggerService.info(`💰 Processing Commissions for Fulfill: ${product.name}`, { 

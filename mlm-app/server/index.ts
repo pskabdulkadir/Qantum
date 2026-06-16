@@ -155,7 +155,77 @@ export async function createServer() {
   }));
 
   app.disable('x-powered-by');
-  
+
+  // ── In-memory brute-force / DDoS tracker ──────────────────────────────────
+  // Tracks failed login attempts per IP. Blocks IP after threshold.
+  const _failedAttempts = new Map<string, { count: number; until: number }>();
+  const BRUTE_MAX = 10;          // max failed attempts
+  const BRUTE_BAN_MS = 15 * 60 * 1000; // 15-minute ban window
+  // Clean stale entries every 30 minutes
+  setInterval(() => {
+    const now = Date.now();
+    for (const [ip, rec] of _failedAttempts) {
+      if (now > rec.until) _failedAttempts.delete(ip);
+    }
+  }, 30 * 60 * 1000);
+
+  // Middleware: block banned IPs on auth routes
+  const bruteGuard = (req: express.Request, res: express.Response, next: express.NextFunction) => {
+    const ip = (req.ip || req.socket.remoteAddress || '').replace('::ffff:', '');
+    const rec = _failedAttempts.get(ip);
+    if (rec && Date.now() < rec.until && rec.count >= BRUTE_MAX) {
+      LoggerService.warn("Brute-force blocked", { ip, path: req.path, context: "SECURITY" });
+      return res.status(429).json({
+        error: "Güvenlik sistemi: IP geçici olarak engellendi. 15 dakika sonra tekrar deneyin.",
+        blocked: true
+      });
+    }
+    next();
+  };
+
+  // Attach brute-force helpers on req so auth route can call them directly
+  app.use('/api/auth', (req: any, _res: express.Response, next: express.NextFunction) => {
+    req._recordFailedLogin = (ip: string) => {
+      const now = Date.now();
+      const rec = _failedAttempts.get(ip) || { count: 0, until: now + BRUTE_BAN_MS };
+      rec.count += 1;
+      rec.until = now + BRUTE_BAN_MS;
+      _failedAttempts.set(ip, rec);
+    };
+    req._clearFailedLogin = (ip: string) => _failedAttempts.delete(ip);
+    next();
+  });
+
+  // XSS Pattern Detection middleware
+  const xssPatterns = [
+    /<script[\s>]/i,
+    /javascript:/i,
+    /on\w+\s*=/i,
+    /eval\s*\(/i,
+    /document\.cookie/i,
+    /window\.location/i,
+    /base64[^a-zA-Z]/i,
+  ];
+  app.use((req, res, next) => {
+    const body = JSON.stringify(req.body || '');
+    if (xssPatterns.some(rx => rx.test(body))) {
+      LoggerService.warn("XSS pattern detected in request body", { ip: req.ip, path: req.path, context: "SECURITY" });
+      return res.status(400).json({ error: "Geçersiz istek içeriği algılandı." });
+    }
+    next();
+  });
+
+  // Block suspicious User-Agents (scanners, vulnerability tools)
+  const suspiciousUA = /sqlmap|nikto|masscan|nmap|hydra|burpsuite|zgrab|w3af|dirbuster|wfuzz|gobuster/i;
+  app.use((req, res, next) => {
+    const ua = req.headers['user-agent'] || '';
+    if (suspiciousUA.test(ua)) {
+      LoggerService.warn("Suspicious User-Agent blocked", { ip: req.ip, ua, context: "SECURITY" });
+      return res.status(403).json({ error: "Erişim reddedildi." });
+    }
+    next();
+  });
+
   // Rate Limiting - DDoS / Brute Force protection
   const apiLimiter = rateLimit({
     windowMs: 5 * 60 * 1000, // 5 minutes
@@ -189,8 +259,8 @@ export async function createServer() {
   });
 
   app.use("/api/", apiLimiter);
-  app.use("/api/auth/login", authLimiter);
-  app.use("/api/auth/register", authLimiter);
+  app.use("/api/auth/login", bruteGuard, authLimiter);
+  app.use("/api/auth/register", bruteGuard, authLimiter);
 
   // Extra strict rate limiting for high-risk / destructive admin operations
   const destructiveLimiter = rateLimit({

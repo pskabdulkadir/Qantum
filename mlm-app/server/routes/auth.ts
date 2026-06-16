@@ -268,6 +268,9 @@ router.post("/login", async (req, res) => {
     console.log(`Password verification result: ${passwordValid}`);
 
     if (!passwordValid) {
+      // Record failed attempt for brute-force protection
+      const clientIp = (req.ip || req.socket?.remoteAddress || '').replace('::ffff:', '');
+      (req as any)._recordFailedLogin?.(clientIp);
       return res.status(401).json({
         success: false,
         error: "Geçersiz email veya şifre.",
@@ -292,6 +295,10 @@ router.post("/login", async (req, res) => {
 
     const accessToken = generateAccessToken(tokenPayload);
     const refreshToken = generateRefreshToken(tokenPayload);
+
+    // Clear brute-force counter on successful login
+    const clientIpOk = (req.ip || (req.socket as any)?.remoteAddress || '').replace('::ffff:', '');
+    (req as any)._clearFailedLogin?.(clientIpOk);
 
     // Update last login date
     await mongoDb.updateUser(user.id, { lastLoginDate: new Date() });

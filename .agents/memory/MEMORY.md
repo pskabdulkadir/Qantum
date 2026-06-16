@@ -1,0 +1,3 @@
+- [MLM app setup](mlm-app-setup.md) — standalone npm app (not pnpm workspace) at mlm-app/, runs via tsx server.ts on PORT=24163
+- [Security layer](mlm-app-security.md) — in-memory brute-force tracker on req, XSS pattern guard, suspicious UA block, all added in server/index.ts
+- [Commission system](mlm-app-commission.md) — calculateMonolineCommissions uses actual productPrice for all percentage calcs; purchase-fulfillment.ts is the source of truth for product purchase → commission flow

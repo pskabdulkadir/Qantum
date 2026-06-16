@@ -110,10 +110,10 @@ const AdminProductManagement: React.FC = () => {
   useEffect(() => {
     loadProducts();
 
-    // Auto-refresh admin products every 3 seconds for real-time visibility
+    // Auto-refresh admin products every 30 seconds
     const refreshInterval = setInterval(() => {
       loadProducts();
-    }, 3000);
+    }, 30000);
 
     return () => clearInterval(refreshInterval);
   }, []);

@@ -41,9 +41,44 @@ interface Slide {
   color: string;
 }
 
+const enterFullscreen = () => {
+  try {
+    const el = document.documentElement as any;
+    const fn = el.requestFullscreen || el.webkitRequestFullscreen || el.mozRequestFullScreen || el.msRequestFullscreen;
+    fn?.call(el);
+  } catch (_) {}
+};
+
+const exitFullscreen = () => {
+  try {
+    const doc = document as any;
+    if (doc.fullscreenElement || doc.webkitFullscreenElement || doc.mozFullScreenElement || doc.msFullscreenElement) {
+      const fn = doc.exitFullscreen || doc.webkitExitFullscreen || doc.mozCancelFullScreen || doc.msExitFullscreen;
+      fn?.call(doc);
+    }
+  } catch (_) {}
+};
+
 export function SystemPresentation({ open, onOpenChange, referralCode }: { open: boolean; onOpenChange: (open: boolean) => void; referralCode?: string }) {
   const { toast } = useToast();
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  // Track fullscreen state
+  useEffect(() => {
+    const onFsChange = () => {
+      const doc = document as any;
+      setIsFullscreen(!!(doc.fullscreenElement || doc.webkitFullscreenElement || doc.mozFullScreenElement));
+    };
+    document.addEventListener("fullscreenchange", onFsChange);
+    document.addEventListener("webkitfullscreenchange", onFsChange);
+    document.addEventListener("mozfullscreenchange", onFsChange);
+    return () => {
+      document.removeEventListener("fullscreenchange", onFsChange);
+      document.removeEventListener("webkitfullscreenchange", onFsChange);
+      document.removeEventListener("mozfullscreenchange", onFsChange);
+    };
+  }, []);
 
   // Keyboard navigation
   useEffect(() => {
@@ -51,15 +86,21 @@ export function SystemPresentation({ open, onOpenChange, referralCode }: { open:
     const handler = (e: KeyboardEvent) => {
       if (e.key === "ArrowRight") next();
       if (e.key === "ArrowLeft") prev();
-      if (e.key === "Escape") onOpenChange(false);
+      if (e.key === "Escape") { exitFullscreen(); onOpenChange(false); }
+      if (e.key === "f" || e.key === "F") { isFullscreen ? exitFullscreen() : enterFullscreen(); }
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [open]);
+  }, [open, isFullscreen]);
 
-  // Reset to first slide on open
+  // Enter fullscreen & reset slide on open
   useEffect(() => {
-    if (open) setCurrentSlide(0);
+    if (open) {
+      setCurrentSlide(0);
+      enterFullscreen();
+    } else {
+      exitFullscreen();
+    }
   }, [open]);
 
   const slides: Slide[] = [
@@ -653,8 +694,9 @@ Sponsor Kodu: ${referralCode || "Merkez"}
 
         {/* Close button */}
         <button
-          onClick={() => onOpenChange(false)}
+          onClick={() => { exitFullscreen(); onOpenChange(false); }}
           className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/40 transition-colors text-white"
+          title="Kapat (ESC)"
         >
           <X className="w-5 h-5" />
         </button>
@@ -731,7 +773,7 @@ Sponsor Kodu: ${referralCode || "Merkez"}
           ))}
         </div>
 
-        {/* Share / PDF */}
+        {/* Share / PDF / Fullscreen */}
         <div className="flex items-center gap-1">
           <Button onClick={copyPresentationLink} variant="ghost" size="sm" className="gap-1.5 text-slate-400 hover:text-blue-600 font-bold">
             <Copy className="w-4 h-4" />
@@ -740,6 +782,20 @@ Sponsor Kodu: ${referralCode || "Merkez"}
           <Button onClick={downloadPresentation} variant="ghost" size="sm" className="gap-1.5 text-slate-400 hover:text-red-600 font-bold">
             <Download className="w-4 h-4" />
             <span className="hidden md:inline text-[10px] uppercase tracking-wider">PDF</span>
+          </Button>
+          <Button
+            onClick={() => isFullscreen ? exitFullscreen() : enterFullscreen()}
+            variant="ghost"
+            size="sm"
+            className="gap-1.5 text-slate-400 hover:text-emerald-600 font-bold"
+            title={isFullscreen ? "Tam Ekrandan Çık (F)" : "Tam Ekran (F)"}
+          >
+            {isFullscreen ? (
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M8 3v3a2 2 0 01-2 2H3m18 0h-3a2 2 0 01-2-2V3m0 18v-3a2 2 0 012-2h3M3 16h3a2 2 0 012 2v3"/></svg>
+            ) : (
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+            )}
+            <span className="hidden md:inline text-[10px] uppercase tracking-wider">{isFullscreen ? "Küçült" : "Tam Ekran"}</span>
           </Button>
         </div>
       </div>
