@@ -32,7 +32,7 @@ export default class ErrorBoundary extends React.Component<React.PropsWithChildr
           <h1 className="text-3xl font-bold mb-2">Bir hata oluştu</h1>
           <p className="opacity-80 mb-4">Sayfa yüklenirken bir sorun yaşandı. Lütfen tekrar deneyin.</p>
           <button onClick={this.handleReload} className="px-4 py-2 rounded bg-violet-600 hover:bg-violet-700 transition">Yenile</button>
-          {process.env.NODE_ENV !== "production" && this.state.error ? (
+          {import.meta.env.DEV && this.state.error ? (
             <pre className="mt-6 max-w-2xl w-full text-left text-xs bg-neutral-900 p-4 rounded overflow-auto">
               {this.state.error?.stack || this.state.error?.message}
             </pre>

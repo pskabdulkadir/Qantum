@@ -906,7 +906,7 @@ export default function ComprehensiveAdminPanel() {
     displayOrder: 1
   });
   const [stripeConfig, setStripeConfig] = useState({
-    publishableKey: process.env.VITE_STRIPE_PUBLIC_KEY || 'pk_live_...',
+    publishableKey: import.meta.env.VITE_STRIPE_PUBLIC_KEY || 'pk_live_...',
     connectEnabled: true,
     checkoutEnabled: true,
     webhookActive: true,
