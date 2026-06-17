@@ -55,6 +55,7 @@ import {
   FlameKindling
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import QuantumHealingTherapy from "@/components/QuantumHealingTherapy";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -647,23 +648,35 @@ export default function BatiniPanel() {
         </div>
 
         <Tabs defaultValue="secrets" value={activeTab} onValueChange={setActiveTab} className="space-y-12">
-          <div className="sticky top-20 z-40 bg-white/80 backdrop-blur-md p-2 rounded-full border border-slate-200 shadow-xl max-w-3xl mx-auto">
-            <TabsList className="grid grid-cols-2 md:grid-cols-4 h-14 bg-transparent gap-2">
-              <TabsTrigger value="secrets" className="rounded-full font-black text-[10px] uppercase tracking-widest data-[state=active]:bg-indigo-600 data-[state=active]:text-white transition-all">
-                <Activity className="w-4 h-4 mr-2" />
+          <div className="sticky top-20 z-40 bg-white/80 backdrop-blur-md p-2 rounded-2xl border border-slate-200 shadow-xl max-w-4xl mx-auto">
+            <TabsList className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 h-auto bg-transparent gap-2">
+              <TabsTrigger value="secrets" className="rounded-xl font-black text-[10px] uppercase tracking-widest data-[state=active]:bg-indigo-600 data-[state=active]:text-white transition-all py-3">
+                <Activity className="w-4 h-4 mr-1.5" />
                 Dinamik Sırlar
               </TabsTrigger>
-              <TabsTrigger value="heart" className="rounded-full font-black text-[10px] uppercase tracking-widest data-[state=active]:bg-rose-600 data-[state=active]:text-white transition-all">
-                <Radio className="w-4 h-4 mr-2" />
+              <TabsTrigger value="heart" className="rounded-xl font-black text-[10px] uppercase tracking-widest data-[state=active]:bg-rose-600 data-[state=active]:text-white transition-all py-3">
+                <Radio className="w-4 h-4 mr-1.5" />
                 Frekanslar
               </TabsTrigger>
-              <TabsTrigger value="cosmic" className="rounded-full font-black text-[10px] uppercase tracking-widest data-[state=active]:bg-blue-600 data-[state=active]:text-white transition-all">
-                <Zap className="w-4 h-4 mr-2" />
+              <TabsTrigger value="cosmic" className="rounded-xl font-black text-[10px] uppercase tracking-widest data-[state=active]:bg-blue-600 data-[state=active]:text-white transition-all py-3">
+                <Zap className="w-4 h-4 mr-1.5" />
                 Işık Sistemi
               </TabsTrigger>
-              <TabsTrigger value="techniques" className="rounded-full font-black text-[10px] uppercase tracking-widest data-[state=active]:bg-purple-600 data-[state=active]:text-white transition-all">
-                <Settings className="w-4 h-4 mr-2" />
+              <TabsTrigger value="techniques" className="rounded-xl font-black text-[10px] uppercase tracking-widest data-[state=active]:bg-purple-600 data-[state=active]:text-white transition-all py-3">
+                <Settings className="w-4 h-4 mr-1.5" />
                 Teknikler
+              </TabsTrigger>
+              {/* ── YENİ: Quantum Healing Therapy ── */}
+              <TabsTrigger
+                value="quantum"
+                className="rounded-xl font-black text-[10px] uppercase tracking-widest data-[state=active]:text-white transition-all py-3 col-span-2 md:col-span-1 relative overflow-hidden
+                  data-[state=active]:bg-gradient-to-r data-[state=active]:from-cyan-600 data-[state=active]:to-purple-600
+                  border-2 border-dashed border-cyan-400/40 data-[state=active]:border-transparent"
+              >
+                <HeartPulse className="w-4 h-4 mr-1.5 text-cyan-500 data-[state=active]:text-white" />
+                <span className="bg-gradient-to-r from-cyan-600 to-purple-600 bg-clip-text text-transparent data-[state=active]:text-white">
+                  Qantum Healing
+                </span>
               </TabsTrigger>
             </TabsList>
           </div>
@@ -854,6 +867,12 @@ export default function BatiniPanel() {
                 ))}
              </div>
           </TabsContent>
+
+          {/* ── Quantum Healing Therapy Content ── */}
+          <TabsContent value="quantum" className="animate-in fade-in slide-in-from-bottom-4 duration-500 outline-none">
+            <QuantumHealingTherapy />
+          </TabsContent>
+
         </Tabs>
       </main>
 

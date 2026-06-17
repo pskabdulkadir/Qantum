@@ -1,0 +1,38 @@
+"Sen, ileri seviye bir Full-Stack Yazılım Mühendisi ve Biyo-Rezonans uzmanısın. Seninle 'Quantum-Healing AI' adında bir mobil/web uygulaması geliştireceğiz. Aşağıdaki teknik gereksinimlere göre bu sistemin mimarisini, algoritmasını ve kodlama mantığını oluşturmanı istiyorum.
+
+1. Temel Vizyon:
+Uygulama; kamera sensörleri aracılığıyla kullanıcının aurik alanını ve frekansını analiz edecek, tespit edilen enerji düşüklüğünü (blokajları) manevi ve kozmik frekanslarla onaracak bir şifa platformudur.
+
+2. Teknik Modüller ve Algoritma:
+
+Biyometrik Tarama (Vision AI): OpenCV ve MediaPipe kullanarak kamera üzerinden yüzdeki kan akış hızı (PPG), göz bebekleri büyümesi ve mikro-mimikler üzerinden bir 'Duygu ve Frekans Analizi' yap. (Bunu 'Aurik Renk Analizi' olarak görselleştir).
+
+Rezonans Motoru: Tespit edilen düşük frekanslı duygu durumuna (örneğin: kaygı, yorgunluk, blokaj) göre, uygulamadaki 'Frekans Kütüphanesi'nden en uygun şifa dosyasını (Kozmik sesler, su sesleri, Hz frekansları) eşleştir.
+
+Kuran-ı Kerim Şifa Kütüphanesi: Bir veritabanı yapısı kur. Her sure ve ayetin hangi manevi/fiziksel şifaya (örneğin; şifa için Fatiha, ferahlık için İnşirah) karşılık geldiğini indeksle. Kullanıcı 'Şifayı Yükle' dediğinde, ilgili ayetin ses frekansını arka planda işleyerek (audio-modulation) çal.
+
+Onarım ve Yükleme (Frequency Injection): Uygulama, kullanıcının enerji alanına 'yükleme' yapıyormuş hissi veren, görsel ve işitsel bir 'Rezonans Senkronizasyonu' arayüzü sunsun.
+
+3. Uygulama Bölümleri:
+
+Analiz Paneli: Kamera taraması sonrası renkli aura grafiği ve enerji seviyesi skoru (0-100).
+
+Şifa Kütüphanesi: (Kozmik Sesler, Doğa/Su Frekansları, Solfeggio Frekansları).
+
+Manevi Rezonans: Sure/Ayet indeksi ve sesli frekans yükleme ünitesi.
+
+Kullanıcı Geçmişi: Enerji artış grafiklerinin takibi.
+
+4. İstediğim Çıktı:
+Öncelikle bu sistemin 'System Architecture' (Sistem Mimarisi) belgesini hazırla. Hangi AI kütüphanelerini kullanmalıyız? Frontend (React Native/Vite) ve Backend (Node.js/Python) arasındaki iletişimi nasıl kurmalıyız? Özellikle 'Ses Frekans Yüklemesi' için Web Audio API'yi nasıl yapılandırmalıyız? Adım adım teknik yol haritasını açıkla."
+
+Projeyi Geliştirirken Bilmen Gereken "Altın Kurallar"
+Bu uygulamayı kodlatırken şu kritik noktalara dikkat etmesini iste:
+
+Hata Payı ve Sorumluluk Reddi (Disclaimer): Yapay zekaya mutlaka uygulamanın tıbbi bir tanı aracı olmadığını, bir "Rehberlik ve Manevi Şifa" aracı olduğunu belirten yasal bir uyarı (Disclaimer) sayfası tasarlat.
+
+Kamera Sensör Verisi (PPG): Kamera ile nabız tespiti (Remote Photoplethysmography - rPPG) yapabilirsin. Bu, kandaki değişimleri ışıkla ölçer. Bu teknoloji, kullanıcının "stres/enerji seviyesini" ölçmek için gerçek bir bilimsel temeldir.
+
+Frekans Senkronizasyonu: Ses frekanslarını sadece çalmakla kalma; "Binaural Beats" (İki kulağa farklı frekans vererek beyin dalgalarını değiştirme) yöntemini kodlamasını iste. Bu, "yükleme yapma" etkisini teknolojik olarak kanıtlanabilir kılan bir yöntemdir.
+
+Veritabanı Yapısı:Surelerin ve ayetlerin şifasal etkilerini (örneğin; "El-Şafi" esması ve şifa ayetleri) bir JSON veritabanında tut. Uygulama "Öneri" butonuna bastığında AI, kullanıcının analiz sonucuna göre en uygun "Sure + Frekans" kombinasyonunu otomatik seçsin.

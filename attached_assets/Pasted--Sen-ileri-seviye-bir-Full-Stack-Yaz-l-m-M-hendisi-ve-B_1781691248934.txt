@@ -1,0 +1,79 @@
+"Sen, ileri seviye bir Full-Stack Yazılım Mühendisi ve Biyo-Rezonans uzmanısın. Seninle 'Quantum-Healing AI' adında bir mobil/web uygulaması geliştireceğiz. Aşağıdaki teknik gereksinimlere göre bu sistemin mimarisini, algoritmasını ve kodlama mantığını oluşturmanı istiyorum.
+
+1. Temel Vizyon:
+Uygulama; kamera sensörleri aracılığıyla kullanıcının aurik alanını ve frekansını analiz edecek, tespit edilen enerji düşüklüğünü (blokajları) manevi ve kozmik frekanslarla onaracak bir şifa platformudur.
+
+2. Teknik Modüller ve Algoritma:
+
+Biyometrik Tarama (Vision AI): OpenCV ve MediaPipe kullanarak kamera üzerinden yüzdeki kan akış hızı (PPG), göz bebekleri büyümesi ve mikro-mimikler üzerinden bir 'Duygu ve Frekans Analizi' yap. (Bunu 'Aurik Renk Analizi' olarak görselleştir).
+
+Rezonans Motoru: Tespit edilen düşük frekanslı duygu durumuna (örneğin: kaygı, yorgunluk, blokaj) göre, uygulamadaki 'Frekans Kütüphanesi'nden en uygun şifa dosyasını (Kozmik sesler, su sesleri, Hz frekansları) eşleştir.
+
+Kuran-ı Kerim Şifa Kütüphanesi: Bir veritabanı yapısı kur. Her sure ve ayetin hangi manevi/fiziksel şifaya (örneğin; şifa için Fatiha, ferahlık için İnşirah) karşılık geldiğini indeksle. Kullanıcı 'Şifayı Yükle' dediğinde, ilgili ayetin ses frekansını arka planda işleyerek (audio-modulation) çal.
+
+Onarım ve Yükleme (Frequency Injection): Uygulama, kullanıcının enerji alanına 'yükleme' yapıyormuş hissi veren, görsel ve işitsel bir 'Rezonans Senkronizasyonu' arayüzü sunsun.
+
+3. Uygulama Bölümleri:
+
+Analiz Paneli: Kamera taraması sonrası renkli aura grafiği ve enerji seviyesi skoru (0-100).
+
+Şifa Kütüphanesi: (Kozmik Sesler, Doğa/Su Frekansları, Solfeggio Frekansları).
+
+Manevi Rezonans: Sure/Ayet indeksi ve sesli frekans yükleme ünitesi.
+
+Kullanıcı Geçmişi: Enerji artış grafiklerinin takibi.
+
+4. İstediğim Çıktı:
+Öncelikle bu sistemin 'System Architecture' (Sistem Mimarisi) belgesini hazırla. Hangi AI kütüphanelerini kullanmalıyız? Frontend (React Native/Vite) ve Backend (Node.js/Python) arasındaki iletişimi nasıl kurmalıyız? Özellikle 'Ses Frekans Yüklemesi' için Web Audio API'yi nasıl yapılandırmalıyız? Adım adım teknik yol haritasını açıkla."
+
+Projeyi Geliştirirken Bilmen Gereken "Altın Kurallar"
+Bu uygulamayı kodlatırken şu kritik noktalara dikkat etmesini iste:
+
+Hata Payı ve Sorumluluk Reddi (Disclaimer): Yapay zekaya mutlaka uygulamanın tıbbi bir tanı aracı olmadığını, bir "Rehberlik ve Manevi Şifa" aracı olduğunu belirten yasal bir uyarı (Disclaimer) sayfası tasarlat.
+
+Kamera Sensör Verisi (PPG): Kamera ile nabız tespiti (Remote Photoplethysmography - rPPG) yapabilirsin. Bu, kandaki değişimleri ışıkla ölçer. Bu teknoloji, kullanıcının "stres/enerji seviyesini" ölçmek için gerçek bir bilimsel temeldir.
+
+Frekans Senkronizasyonu: Ses frekanslarını sadece çalmakla kalma; "Binaural Beats" (İki kulağa farklı frekans vererek beyin dalgalarını değiştirme) yöntemini kodlamasını iste. Bu, "yükleme yapma" etkisini teknolojik olarak kanıtlanabilir kılan bir yöntemdir.
+
+Veritabanı Yapısı:Surelerin ve ayetlerin şifasal etkilerini (örneğin; "El-Şafi" esması ve şifa ayetleri) bir JSON veritabanında tut. Uygulama "Öneri" butonuna bastığında AI, kullanıcının analiz sonucuna göre en uygun "Sure + Frekans" kombinasyonunu otomatik seçsin. 
+
+Geliştirilmiş Sistem Talimatı (Prompt)
+"Sen, biyo-teknoloji, kuantum fiziği ve yapay zeka alanında uzmanlaşmış bir baş mimarsın. 'Quantum-Scan Healing Engine' projesini bir üst seviyeye taşıyoruz. Artık sadece frekans analizi değil, 'Dijital Biyo-Görüntüleme' (Röntgen ve MRI mantığında) yeteneği olan bir sistem inşa edeceğiz.
+
+1. Vizyon:
+Uygulama, mobil cihazın kamerasını ve sensörlerini kullanarak, sanki bir X-ray/MRI cihazıymış gibi vücudu tarayacak. AI, görüntüyü işleyerek enerji blokajlarını, aurik yırtılmaları veya fiziksel yorgunluk bölgelerini 'ısı haritası' (heatmap) veya '3D Mesh' üzerinde tespit edecek.
+
+2. Gelişmiş Teknik Modüller:
+
+Biyo-Görüntüleme (Synthetic Imaging): OpenCV ve derin öğrenme (CNN) modelleri kullanarak, kamera verisinden elde edilen görüntüyü gerçek zamanlı analiz et. Vücut postürünü ve enerji akışını '3D Dijital İkiz' (Digital Twin) üzerine yansıt.
+
+X-Ray Modu (Anomaly Detection): 'X-ray simülasyonu' ile, vücuttaki enerji düşüklüğünü (blokajı) vücudun ilgili bölgesinde görsel olarak işaretle. (Örneğin: Karaciğer meridyenindeki enerji düşüklüğünü MRI kesiti gibi görselleştirerek kullanıcıya sun).
+
+Frekans ve Rezonans Onarımı: Tespit edilen her 'hasarlı bölge' için spesifik bir frekans (Solfeggio veya Binaural Beats) ve ilgili Kuran surelerini (Şifa Ayetleri/Esma-ül Hüsna) içeren bir 'Onarım Protokolü' oluştur.
+
+Kozmik Şifa ve Yükleme: Tespit sonrası, kullanıcının o bölgesine odaklanarak 432Hz/528Hz ses frekansları ve seçilen sure ile 'Enerji Yükleme' seansı başlat.
+
+3. İş Akışı Adımları:
+
+Tarama (Scan): Kamera ile vücut taraması ve AI destekli 'Aurik-Vücut Haritalama'.
+
+Tanı (Diagnosis): Tespit edilen enerji blokajlarının 3D model üzerinde gösterimi.
+
+Öneri (Protocol): Sorunun kaynağına göre AI'nın önerdiği 'Sure + Frekans + Ses' kombinasyonlu şifa reçetesi.
+
+Onarım (Treatment): Görsel ve işitsel bir 'Rezonans Terapisi' ile vücudun o bölgesini frekansla 'yeniden kalibre etme'.
+
+4. İstediğim Çıktı:
+
+Teknik Mimari: Bu görüntüleme sistemini oluşturmak için hangi 'Computer Vision' kütüphaneleri (örn: MediaPipe, TensorFlow Lite) kullanılmalı?
+
+Veri Eşleşmesi: 'Anomali' (enerji düşüklüğü) ile 'Frekans' (onarım protokolü) arasındaki ilişkiyi kurmak için nasıl bir 'Expert System' algoritması kurmalıyız?
+
+UI/UX: Bir MRI cihazı arayüzü gibi hissettiren, 3D vücut modeli içeren modern ve şık bir arayüz için rehberlik et."
+
+Geliştirici İçin Ek İpuçları (Sana Notlar)
+3D İkiz (Digital Twin): Uygulamanın içinde sabit bir 3D insan modeli (Mesh) tutmanı iste. Kamera ile taradığında, kullanıcının omzu, başı veya midesi nerede, bunu AI ile modelin üzerine yerleştir (Augmented Reality - AR mantığı).
+
+Görselleştirme: "Röntgen/Emar" görüntüsü illüzyonunu yaratmak için, kameradan gelen görüntüye 'Glow Effect' (Parıltı efekti) ve 'Overlay' (Katman) ekle. Bu, kullanıcının "tarandığını" hissetmesini sağlar.
+
+Veri Seti: Yapay zekaya "Manevi şifa verilerini nasıl yapısallaştırabilirim?" diye sor. Örneğin; "Kalp bölgesi enerji düşüklüğü" tespit edildiğinde, sistem otomatik olarak 'İnşirah Suresi' ve '528Hz Frekansı' önermeli.
