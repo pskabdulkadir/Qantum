@@ -1,18 +1,18 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { Button } from "@/components/ui/button";
-import { Info } from "lucide-react";
+import { Info, ExternalLink } from "lucide-react";
 
 export default function QuantumHealingTherapy() {
+  const navigate = useNavigate();
   const [showDisclaimer, setShowDisclaimer] = useState(true);
-  const [accepted, setAccepted] = useState(false);
 
   return (
     <div className="min-h-[400px] flex flex-col items-center justify-center">
 
-      {/* ── DISCLAIMER MODAL ── */}
       <AnimatePresence>
-        {showDisclaimer && !accepted && (
+        {showDisclaimer && (
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -44,10 +44,11 @@ export default function QuantumHealingTherapy() {
                   İptal
                 </Button>
                 <Button
-                  onClick={() => { setShowDisclaimer(false); setAccepted(true); }}
+                  onClick={() => navigate('/quantum-healing')}
                   className="flex-1 rounded-xl bg-gradient-to-r from-cyan-600 to-purple-600 text-white"
                 >
-                  Anladım, Devam Et
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  Uygulamayı Aç
                 </Button>
               </div>
             </div>
@@ -55,15 +56,7 @@ export default function QuantumHealingTherapy() {
         )}
       </AnimatePresence>
 
-      {/* ── PLACEHOLDER — yeni uygulama buraya entegre edilecek ── */}
-      {accepted && (
-        <div className="text-center text-slate-400 py-24">
-          {/* İçerik yakında */}
-        </div>
-      )}
-
-      {/* İptal edildiğinde tekrar aç butonu */}
-      {!showDisclaimer && !accepted && (
+      {!showDisclaimer && (
         <div className="text-center space-y-4">
           <p className="text-slate-500 text-sm">Devam etmek için uyarıyı onaylayın.</p>
           <Button

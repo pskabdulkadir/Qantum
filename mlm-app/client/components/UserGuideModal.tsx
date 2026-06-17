@@ -62,28 +62,69 @@ Komisyon kazanmak için üyeliğinizi aktif etmeniz gerekir.
     title: "3. Kariyer Seviyeleri (10 Basamak)",
     icon: "🏆",
     content: `
-AKN Group, manevi değerlere dayalı 10 kariyer seviyesine sahiptir.
+AKN Group, tasavvuf geleneğine dayalı 10 kariyer seviyesine sahiptir. Yükselme otomatik olarak hesaplanır.
 
 🌟 KARİYER SEVİYELERİ VE GEREKSİNİMLER:
 
-1️⃣  Mülhime (Başlangıç) — Tüm yeni üyeler bu seviyeden başlar
-2️⃣  Levvame — Ekip cirosu büyüdükçe otomatik yükselme
-3️⃣  Mülheme — Daha fazla direktüye ve ciro hedefi
-4️⃣  Mutmaine — Orta seviye liderlik
-5️⃣  Radiye — Güçlü ekip ve yüksek ciro
-6️⃣  Mardiye — Üst liderlik kademesi
-7️⃣  Kâmile — Deneyimli lider
-8️⃣  Münevvere — Seçkin lider
-9️⃣  Vâsıla — Zirveye yakın
-🔟 İnsan-ı Kamil — En yüksek kariyer seviyesi
+1️⃣  MÜLHİME (Başlangıç)
+    • Minimum Ekip Cirosu: $500
+    • Direkt Üye: 2 kişi
+    • Liderlik Bonusu: %3
+    • Tüm yeni üyeler bu seviyeden başlar
 
-📊 KARİYER YÜKSELTME KRİTERLERİ:
-• Ekip cirosu (teamTurnoverUSD) belirleyici faktördür
-• Direkt sponsor sayısı önemlidir
-• Her satın alma işlemi sonrası otomatik kontrol yapılır
-• Kariyer seviyeniz Üye Paneli → Dashboard'da görünür
+2️⃣  MUTMAİNNE
+    • Minimum Ekip Cirosu: $1.500
+    • Direkt Üye: 3 kişi
+    • Liderlik Bonusu: %4
 
-🎯 HEDEF: İnsan-ı Kamil seviyesine ulaşmak için güçlü bir ekip kurmalı ve sürdürülebilir ciro yaratmalısınız.
+3️⃣  RADİYE
+    • Minimum Ekip Cirosu: $3.500
+    • Direkt Üye: 4 kişi
+    • Liderlik Bonusu: %5
+
+4️⃣  MARDİYYE
+    • Minimum Ekip Cirosu: $7.500
+    • Direkt Üye: 5 kişi
+    • Liderlik Bonusu: %6
+
+5️⃣  SAFİYYE
+    • Minimum Ekip Cirosu: $15.000
+    • Direkt Üye: 6 kişi
+    • Liderlik Bonusu: %7
+
+6️⃣  MÜRŞİD
+    • Minimum Ekip Cirosu: $30.000
+    • Direkt Üye: 8 kişi
+    • Liderlik Bonusu: %8
+
+7️⃣  PİR
+    • Minimum Ekip Cirosu: $60.000
+    • Direkt Üye: 10 kişi
+    • Liderlik Bonusu: %10
+
+8️⃣  KUTUB
+    • Minimum Ekip Cirosu: $120.000
+    • Direkt Üye: 12 kişi
+    • Liderlik Bonusu: %12
+
+9️⃣  GAVS
+    • Minimum Ekip Cirosu: $250.000
+    • Direkt Üye: 15 kişi
+    • Liderlik Bonusu: %15
+
+🔟 İNSAN-I KAMİL (Zirve)
+    • Minimum Ekip Cirosu: $500.000
+    • Direkt Üye: 20 kişi
+    • Liderlik Bonusu: %20
+    • En prestijli seviye — Sınırsız derinlikten pasif gelir
+
+📊 KARİYER YÜKSELTME KURALLARI:
+• Ekip cirosu: Ağınızdaki tüm satın almaların USD toplamı
+• Her satın alma işlemi sonrası otomatik kariyer kontrolü yapılır
+• Direkt üye sayısı, yalnızca sizin direkt sponsorladığınız aktif üyeleri sayar
+• Kariyer seviyeniz Üye Paneli → Dashboard'da anlık görüntülenir
+
+🎯 HEDEF: Güçlü bir ekip kurun, liderlik bonuslarıyla pasif gelirinizi büyütün!
     `,
   },
   {
