@@ -1,0 +1,6 @@
+{
+  "name": "Quantum-Healing AI",
+  "description": "Biyometrik tarama, aurik blokaj analizi ve Web Audio API Binaural Beats ses motoru ile Kurani şifa frekanslarını birleştiren kuantum biyo-rezonans platformu.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
