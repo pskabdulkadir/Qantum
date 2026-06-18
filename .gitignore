@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # See https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
 # compiled output
@@ -47,3 +48,13 @@ Thumbs.db
 # Replit
 .cache/
 .local/
+=======
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+>>>>>>> 1219eb1ce58f9155031513ccef014f18cff4d644
